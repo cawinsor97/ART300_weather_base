@@ -1,0 +1,63 @@
+.degree_symbol:not(:empty)::after {
+    content: "°"
+}
+
+.owm-legend-item{
+    display: none;
+}
+
+#map {
+	width: 600px;
+    height: 600px;
+}
+
+body, html{
+    padding: 0;
+    margin: 0;
+    display: grid;
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.headerbar {
+    width: auto;
+    height: 50px;
+    background-color: #F2F5F7;
+    position: relative;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 300px 300px 500px 300px;
+    grid-gap: 1rem;
+}
+
+
+.currentweathericon {
+    width:50px;
+    height:25px;
+    margin-left:90%;
+}
+.currentlocation{
+    color:#707070;
+    font-size: 16px;
+}
+
+.alerts{
+    margin-top: 6.5px;
+    padding-bottom: 10px;
+    margin-left:20%;
+    background-color: #C15229;
+    height:25px;
+    width: 500px;
+    color:white;
+    font-size:12px;
+    text-align:center;
+  
+}
+
+.searchbar{
+    width:200px;
+    margin-top:10px;
+    margin-left: 50%;
+}
