@@ -84,9 +84,9 @@ body, html{
     background-color:#F8F8F8;
     margin: auto;
     width: 1000px;
-    height: 150px;
+    height: 125px;
     display:grid; 
-    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr .8fr .8fr
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1.2fr
 }
 
 .one-icon{
@@ -118,8 +118,28 @@ body, html{
 background-color: #F2F5F7;
 }
 
-.seven-varibales2 {
-background-color: #F2F5F7;
+.wind{
+color:#304E9D;
+text-align: center;
+margin-bottom: 5px;
+}
+.Humidity{
+color:#304E9D;
+text-align: center;
+margin-bottom: 5px;
+
+}
+.UVindex{
+color:#304E9D;
+text-align: center;
+margin-bottom: 5px;
+
+}
+.pressure{
+color:#304E9D;
+text-align: center;
+margin-bottom: 5px;
+
 }
 
 
@@ -144,5 +164,46 @@ background-color: #F2F5F7;
         width: 1000px;
         height: 200px;
         display:grid; 
-        grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr .8fr .8fr
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+}
+
+.hourzero{
+    background-color: #F2F5F7;
+}
+
+.houlrycurrenttime {
+    color:#304E9D;
+    text-align: center;
+    margin-top: 10px;
+}
+.hourlyhighandlow {
+    color:#F89F08;
+    text-align: center;
+    margin-top: 10px;
+}
+.icon{}
+.houlryprecipatation {
+    color:#304E9D;
+    text-align: center;
+}
+.houlryhumidity{
+    color:#304E9D;
+    text-align: center;
+}
+
+.hourtwo{
+    
+
+}
+.hourthree{
+    background-color: #F2F5F7;
+}
+.hourfour{
+
+}
+.hourfive{
+    background-color: #F2F5F7;
+}
+.hoursix{
+    
 }
