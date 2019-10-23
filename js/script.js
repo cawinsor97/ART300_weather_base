@@ -12,7 +12,7 @@
 
 let nws; 
 /* ZIP CODE FUNCTIONS */
-let zip = "";
+let zip = "66502";
 const zip_input = document.getElementById('zip');
 zip_input.addEventListener('input', zipTest);
 

@@ -27,37 +27,60 @@
     </head>
 
     <body>
-        <div class="headerbar">
-            <div class="container">
-                <div class="currentweathericon">
-                    test
+        <div class="results" id="app">
+            <div class="headerbar">
+                <div class="container">
+                    <div class="currentweathericon">
+                        test
+                    </div>
+                    <div class="currentlocation">
+                        <p>Manhattan, KS 66502</p>
+                    </div>
+                    <div class="alerts">
+                        <p>Thunderstorm warning in effect until 10:13pm for Southern Riley County</p>
+                    </div>
+                    <div class="searchbar">
+                        <input placeholder="Enter Your ZIP Code" name="name" id="zip" />
+                        <p id="zip_display"></p>
+                    </div>
                 </div>
-                <div class="currentlocation">
-                    <p>Manhattan, KS 66502</p>
-                </div>
-                <div class="alerts">
-                    <p>Thunderstorm warning in effect until 10:13pm for Southern Riley County</p>
-                </div>
-                <div class="searchbar">
-                    <input placeholder="Enter Your ZIP Code" name="name" id="zip" />
-                    <p id="zip_display"></p>
-                </div>
-         </div>
-        </div>
-
-        <div class="currentweather">
-            <div class ="currentweatherheader">
-                    <div class ="currentweatherheadertype"></div>
             </div>
-            <div class="currentweathericon"></div>
-            <div class="currenttemp"></div>
-            <div class="currentdescription"></div>
-            <div class="currenthightemp"></div>
-            <div class="currentloetemp"></div>
+
+            <div class="currentweather">
+                <div class ="currentweatherheader">
+                    <div class="currentweatherheadertype">
+                        <p><b>Current weather in Manhattan Kansas</b> <i>as of 7:15pm</i></p>
+                    </div>
+                </div>
+                <div class="currentcontainer">
+                    <div class="cell one-icon"> TEST QWEEN</div>
+                    <div class="cell two-currenttemp">
+                        <div class="currenttemp">{{current.temp.current}} F</div> 
+                        <div class="currentdescription">Scattred Rain Showers</div>
+                    </div>
+                    <div class="cell three-hl"></div>
+                    <div class="cell four-sunrise"></div>
+                    <div class="cell five-sunset"></div>
+                    <div class="cell six-varibales"><b>Wind</br>Humidity</br>UV index</br>Pressure</b></div>
+                    <div class="cell seven-varibales2"></div>
+                </div>
+
+                <div class="hourlyweather">
+                    <div class ="hourlyweatherheader">
+                        <div class="hourlyweatherheadertype"><p><b>Hourly</b></p></div>
+                    </div>
+                    <div class="hourlycontainer">
+                            <div class=""> </div>
+                            <div class=""> </div>
+                            <div class=""></div>
+                            <div class=""></div>
+                            <div class=""></div>
+                            <div class=""></div>
+                            <div class=""></div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-
-
         <!-- input placeholder="Enter Your ZIP Code" name="name" id="zip" />
         <p id="zip_display"></p>
 
@@ -139,6 +162,6 @@
 
 
 
-        <script src="/js/script.js" type="module"></script>
+        <script src="/js/script.js"></script>
     </body>
 </html>

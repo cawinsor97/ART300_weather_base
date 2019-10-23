@@ -61,3 +61,88 @@ body, html{
     margin-top:10px;
     margin-left: 50%;
 }
+
+.currentweatherheader{
+    background-color:#304E9D;
+    width: 1000px;
+    height: 50px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.currentweatherheadertype {
+    text-align: left;
+    color: white;
+    margin-left: 20px;
+    padding-top: 1px;
+    
+
+}
+
+
+.currentcontainer{
+    background-color:#F8F8F8;
+    margin: auto;
+    width: 1000px;
+    height: 150px;
+    display:grid; 
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr .8fr .8fr
+}
+
+.one-icon{
+
+}
+
+.two-currenttemp {
+
+}
+.currenttemp {
+   color:#F89F08;
+   font-size: 50px;
+   text-align: center;
+   margin-top:20px;
+
+}
+.currentdescription{
+    color:#304E9D;
+   font-size: 12px;
+   text-align: center;
+
+}
+
+.three-hl {
+
+}
+
+.six-varibales{
+background-color: #F2F5F7;
+}
+
+.seven-varibales2 {
+background-color: #F2F5F7;
+}
+
+
+.hourlyweatherheader{
+    background-color:#304E9D;
+    width: 1000px;
+    height: 50px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.hourlyweatherheadertype {
+    text-align: left;
+    color: white;
+    margin-left: 20px;
+    padding-top: 1px;
+}    
+
+.hourlycontainer{
+        background-color:#F8F8F8;
+        margin: auto;
+        width: 1000px;
+        height: 200px;
+        display:grid; 
+        grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr .8fr .8fr
+}
