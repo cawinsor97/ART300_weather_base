@@ -27,20 +27,21 @@
     </head>
 
     <body>
+
+
         <div class="results" id="app">
             <div class="headerbar">
                 <div class="container">
-                    <div class="currentweathericon">
-                        test
+                    <div class="currentweathericon" v-bind:class="'icon-'+current.description_icon">
                     </div>
                     <div class="currentlocation">
-                        <p>Manhattan, KS 66502</p>
+                        <p>{{location.name}}, {{location.zip}}</p>
                     </div>
                     <div class="alerts">
                         <p>Thunderstorm warning in effect until 10:13pm for Southern Riley County</p>
                     </div>
                     <div class="searchbar">
-                        <input placeholder="Enter Your ZIP Code" name="name" id="zip" />
+                        <input placeholder="Enter Your ZIP Code" v-on:input="zipTest" name="name" id="zip" />
                         <p id="zip_display"></p>
                     </div>
                 </div>
@@ -50,8 +51,14 @@
                     <div class="moonandtidephases">
                         <div class ="moonandtidephasesheader">
                             <div class="moonandtidephasestype">
-                                <p><b>Moon and Tide Phases</b></p>
+                                <p><b>Moon & Tide Phases</b></p>
                             </div>
+                        </div>
+                        <div class="moonandtidephasescontainer">
+                            <div class="moonphaseimg"> <img src="/images/images-26.png" alt=""></div>
+                            <div class="moonphasetype">Warming Gibbous</div>
+                            <div class="tidephaseimg"><img src="/images/images-25.png" alt=""></div>
+                            <div class="tidephacetype">High Tide</div>
                         </div>
                     </div>
                 </div>
@@ -59,34 +66,37 @@
                     <div class="currentweather">
                         <div class ="currentweatherheader">
                             <div class="currentweatherheadertype">
-                                <p><b>Current weather in Manhattan Kansas</b> <i>as of 7:15pm</i></p>
+                                <p><b>Current weather in Manhattan Kansas</b> <i>as of {{time.hour_12}} : {{time.minute}} : {{time.seconds}} {{time.ampm}}</i></p>
                             </div>
                         </div>
                         <div class="currentcontainer">
-                            <div class="cell one-icon"> <img src="/images/images-11.png" alt=""> </div>
+                            <div v-bind:class="'icon-'+current.description_icon" id="one-icon"> </div>
                             <div class="cell two-currenttemp">
-                                <div class="currenttemp"> F</div> 
-                                <div class="currentdescription">Scattred Rain Showers</div>
+                                <div class="currenttemp"><p class="degree_symbol">{{current.temp.current}}</p></div>
+                                <div class="currentdescription">{{current.description_main}}</div>
                             </div>
                             <div class="cell three-hl">
-                                <div class="hightemp"> 57F</div>
-                                <div class="lowtemp">68F</div>
+                                <div class="hltemptype">
+                                    <div class="hightemp"><b>High {{current.temp.high}}</b></div>
+                                    <div class="lineone"></div>
+                                    <div class="lowtemp"><b>Low {{current.temp.low}}</b></div>
+                                </div>
                             </div>
                             <div class="cell four-sunrise">
-                                <div class="sunrise">Sunrise</div>
-                                <div class="sunriseicon"></div>
-                                <div class="sunrisetime">7:24am</div>
+                                <div class="sunrisetype"><b>Sunrise</b></div>
+                                <div class="sunriseicon"> <img src="/images/images-24.png" alt=""></div>
+                                <div class="sunrisetype">{{current.sunrise}}</div>
                             </div>
                             <div class="cell five-sunset">
-                                    <div class="sunset">Sunset</div>
-                                    <div class="sunseticon"></div>
-                                    <div class="sunsettime">7:24am</div>
+                                    <div class="sunsettype"><b>Sunset</b></div>
+                                    <div class="sunseticon"> <img src="/images/images-23.png" alt=""> </div>
+                                    <div class="sunsettype">{{current.sunset}}</div>
                             </div>
                             <div class="cell six-varibales">
-                                <div class="wind"> <span><b>Wind</b></span><span>17mph</span></div>
-                                <div class="Humidity"><span><b>Humidity</b></span><span>70%</span></div>
+                                <div class="wind"> <span><b>Wind</b></span><span>{{current.wind.speed}}</span></div>
+                                <div class="Humidity"><span><b>Humidity</b></span><span>{{current.humidity}}</span></div>
                                 <div class="UVindex"><span><b>UVindex</b></span><span>1 out of 10</span></div>
-                                <div class="pressure"><span><b>pressure</b></span><span>29.8in</span></div>
+                                <div class="pressure"><span><b>Pressure</b></span><span>29.8in</span></div>
                             </div>
                         </div>
 
@@ -96,46 +106,46 @@
                             </div>
                             <div class="hourlycontainer">
                                 <div class="hourzero">
-                                    <div class="houlrycurrenttime"> Current</div>
-                                    <div class="hourlyhighandlow">H 57 L57</div>
+                                    <div class="houlrycurrenttime"> <b>{{hourly[0].time}}</b></div>
+                                    <div class="hourlyhighandlow">H {{current.temp.high}} L{{current.temp.low}}</div>
                                     <div class="icon"></div>
-                                    <div class="houlryprecipatation"><span>Precipitation</span><span>60%</span></div>
-                                    <div class="houlryhumidity"><span>Humidity</span><span>60%</span></div>
+                                    <div class="houlryprecipatation"><span><b>Precipitation</b></span><span>60%</span></div>
+                                    <div class="houlryhumidity"><span><b>Humidity</b></span><span>{{current.humidity}}%</span></div>
                                 </div>
                                 <div class="hourtwo">
-                                    <div class="houlrycurrenttime"> Current</div>
+                                    <div class="houlrycurrenttime"> <b>{{hourly[1].time}}</b></div>
                                     <div class="hourlyhighandlow">H 57 L57</div>
                                     <div class="icon"></div>
-                                    <div class="houlryprecipatation"><span>Precipitation</span><span>60%</span></div>
-                                    <div class="houlryhumidity"><span>Humidity</span><span>60%</span></div>
+                                    <div class="houlryprecipatation"><span><b>Precipitation</b></span><span>60%</span></div>
+                                    <div class="houlryhumidity"><span><b>Humidity</b></span><span>60%</span></div>
                                 </div>
                                 <div class="hourthree">
-                                    <div class="houlrycurrenttime"> Current</div>
+                                    <div class="houlrycurrenttime"> <b>{{hourly[2].time}}</b></div>
                                     <div class="hourlyhighandlow">H 57 L57</div>
                                     <div class="icon"></div>
-                                    <div class="houlryprecipatation"><span>Precipitation</span><span>60%</span></div>
-                                    <div class="houlryhumidity"><span>Humidity</span><span>60%</span></div>
+                                    <div class="houlryprecipatation"><span><b>Precipitation</b></span><span>60%</span></div>
+                                    <div class="houlryhumidity"><span><b>Humidity</b></span><span>60%</span></div>
                                 </div>
                                 <div class="hourfour">
-                                    <div class="houlrycurrenttime"> Current</div>
+                                    <div class="houlrycurrenttime"> <b>{{hourly[3].time}}</b></div>
                                     <div class="hourlyhighandlow">H 57 L57</div>
                                     <div class="icon"></div>
-                                    <div class="houlryprecipatation"><span>Precipitation</span><span>60%</span></div>
-                                    <div class="houlryhumidity"><span>Humidity</span><span>60%</span></div>
+                                    <div class="houlryprecipatation"><span><b>Precipitation</b></span><span>60%</span></div>
+                                    <div class="houlryhumidity"><span><b>Humidity</b></span><span>60%</span></div>
                                 </div>
                                 <div class="hourfive">
-                                    <div class="houlrycurrenttime"> Current</div>
+                                    <div class="houlrycurrenttime"> <b>{{hourly[5].time}}</b></div>
                                     <div class="hourlyhighandlow">H 57 L57</div>
                                     <div class="icon"></div>
-                                    <div class="houlryprecipatation"><span>Precipitation</span><span>60%</span></div>
-                                    <div class="houlryhumidity"><span>Humidity</span><span>60%</span></div>
+                                    <div class="houlryprecipatation"><span><b>Precipitation</b></span><span>60%</span></div>
+                                    <div class="houlryhumidity"><span><b>Humidity</b></span><span>60%</span></div>
                                 </div>
                                 <div class="hoursix">
-                                    <div class="houlrycurrenttime"> Current</div>
+                                    <div class="houlrycurrenttime"> <b>{{hourly[6].time}}</b></div>
                                     <div class="hourlyhighandlow">H 57 L57</div>
                                     <div class="icon"></div>
-                                    <div class="houlryprecipatation"><span>Precipitation</span><span>60%</span></div>
-                                    <div class="houlryhumidity"><span>Humidity</span><span>60%</span></div>
+                                    <div class="houlryprecipatation"><span><b>Precipitation</b></span><span>60%</span></div>
+                                    <div class="houlryhumidity"><span><b>Humidity</b></span><span>60%</span></div>
                                 </div>
                             </div>
                         </div>
@@ -143,62 +153,138 @@
                             <div class ="radarheader">
                                 <div class="radarheadertype"><p><b>Radar</b></p></div>
                             </div>
-                            <div class ="activeradar"></div>
+                            <div class ="activeradar">
+                                <div id="map"></div>
+                            </div>
                         </div>
                         <div class="fiveday">
                             <div class ="fivedayheader">
                                 <div class="fivedayheadertype"><p><b>5 Day</b></p></div>
                             </div>
-
+                            <div class="forecast_labels">
+                                <p class="hl_forecast">High/Low</p>
+                                <p class="w_forecast">Wind</p>
+                                <p class="pre_forecast">Precip</p>
+                                <p class="h_forecast">Humidity</p>
+                                <p class="uv_forecast">UV Index</p>
+                            </div>
                             <div class="day">
-                                <div class="one-dayofweek"><b>Current</b></div>
-                                <div class="two-icon">Icon Goes Here</div>
+                                <div class="one-dayofweek"><b>{{forecast[0].weekday}}</b></div>
+                                <div v-bind:class="'icon-'+current.description_icon"></div>
                                 <div class="three-current">
                                     <div class="currenttemp_2">57F</div>
-                                    <div class="description_2">Scattered Showers</div>
+                                    <div class="description_2">{{forecast[0].weather.description}}</div>
                                 </div>
                                 <div class="four-hl">
-                                    <div class="highandlowtemp"> 57F/68F</div>
+                                    <div class="highandlowtemp">{{forecast[0].max_temp}}F/{{forecast[0].max_temp}}F</div>
                                 </div>
                                 <div class="five-wind">
-                                    <div class="wind_2">17mph SW</div>
+                                    <div class="wind_2">{{forecast[0].wind_spd}}{{forecast[0].wind_cdir}}</div>
                                 </div>
                                 <div class="six-precip">
-                                    <div class="precip_2">70%</div>
+                                    <div class="precip_2">{{forecast[0].precip}}</div>
                                 </div>
                                 <div class="six-humidity">
                                     <div class="humidity_2">70%</div>
                                 </div>
                                 <div class="seven-uvindex">
-                                    <div class="uvindex_2">70%</div>
+                                    <div class="uvindex_2">{{forecast[0].uv}}</div>
+                                </div>
+                            </div>
+                            <div class="day">
+                                <div class="one-dayofweek"><b>{{forecast[1].weekday}}</b></div>
+                                <div v-bind:class="'icon-'+forecast[1].description_icon"></div>
+                                <div class="three-current">
+                                    <div class="currenttemp_2">57F</div>
+                                    <div class="description_2">{{forecast[1].weather.description}}</div>
+                                </div>
+                                <div class="four-hl">
+                                    <div class="highandlowtemp"> {{forecast[1].max_temp}}F/{{forecast[1].max_temp}}F</div>
+                                </div>
+                                <div class="five-wind">
+                                    <div class="wind_2">{{forecast[1].wind_spd}}{{forecast[1].wind_cdir}}</div>
+                                </div>
+                                <div class="six-precip">
+                                    <div class="precip_2">{{forecast[1].precip}}</div>
+                                </div>
+                                <div class="six-humidity">
+                                    <div class="humidity_2">70%</div>
+                                </div>
+                                <div class="seven-uvindex">
+                                    <div class="uvindex_2">{{forecast[1].uv}}</div>
+                                </div>
+                            </div>
+                            <div class="day">
+                                <div class="one-dayofweek"><b>{{forecast[2].weekday}}</b></div>
+                                <div v-bind:class="'icon-'+forecast[2].description_icon"></div>
+                                <div class="three-current">
+                                    <div class="currenttemp_2">57F</div>
+                                    <div class="description_2">{{forecast[2].weather.description}}</div>
+                                </div>
+                                <div class="four-hl">
+                                    <div class="highandlowtemp"> {{forecast[2].max_temp}}F/{{forecast[2].max_temp}}F</div>
+                                </div>
+                                <div class="five-wind">
+                                    <div class="wind_2">{{forecast[2].wind_spd}}{{forecast[2].wind_cdir}}</div>
+                                </div>
+                                <div class="six-precip">
+                                    <div class="precip_2">{{forecast[2].precip}}</div>
+                                </div>
+                                <div class="six-humidity">
+                                    <div class="humidity_2">70%</div>
+                                </div>
+                                <div class="seven-uvindex">
+                                    <div class="uvindex_2">{{forecast[2].uv}}</div>
+                                </div>
+                            </div>
+                            <div class="day">
+                                <div class="one-dayofweek"><b>{{forecast[3].weekday}}</b></div>
+                                <div v-bind:class="'icon-'+forecast[3].description_icon"></div>
+                                <div class="three-current">
+                                    <div class="currenttemp_2">57F</div>
+                                    <div class="description_2">{{forecast[3].weather.description}}</div>
+                                </div>
+                                <div class="four-hl">
+                                    <div class="highandlowtemp"> {{forecast[3].max_temp}}F/{{forecast[3].max_temp}}F</div>
+                                </div>
+                                <div class="five-wind">
+                                    <div class="wind_2">{{forecast[3].wind_spd}}{{forecast[3].wind_cdir}}</div>
+                                </div>
+                                <div class="six-precip">
+                                    <div class="precip_2">{{forecast[3].precip}}</div>
+                                </div>
+                                <div class="six-humidity">
+                                    <div class="humidity_2">70%</div>
+                                </div>
+                                <div class="seven-uvindex">
+                                    <div class="uvindex_2">{{forecast[3].uv}}</div>
+                                </div>
+                            </div>
+                            <div class="day">
+                                <div class="one-dayofweek"><b>{{forecast[4].weekday}}</b></div>
+                                <div v-bind:class="'icon-'+forecast[4].description_icon"></div>
+                                <div class="three-current">
+                                    <div class="currenttemp_2">57F</div>
+                                    <div class="description_2">{{forecast[4].weather.description}}</div>
+                                </div>
+                                <div class="four-hl">
+                                    <div class="highandlowtemp"> {{forecast[4].max_temp}}F/{{forecast[4].max_temp}}F</div>
+                                </div>
+                                <div class="five-wind">
+                                    <div class="wind_2">{{forecast[4].wind_spd}}{{forecast[4].wind_cdir}}</div>
+                                </div>
+                                <div class="six-precip">
+                                    <div class="precip_2">{{forecast[4].precip}}</div>
+                                </div>
+                                <div class="six-humidity">
+                                    <div class="humidity_2">70%</div>
+                                </div>
+                                <div class="seven-uvindex">
+                                    <div class="uvindex_2">{{forecast[4].uv}}</div>
                                 </div>
                             </div>
 
-                            <div class="fivedaycontainer">
-                                <div class="day">
-                                    <div class="one-dayofweek"><b>Current</b></div>
-                                    <div class="two-icon">Icon Goes Here</div>
-                                    <div class="three-current">
-                                        <div class="currenttemp_2">57F</div>
-                                        <div class="description_2">Scattered Showers</div>
-                                    </div>
-                                    <div class="four-hl">
-                                        <div class="highandlowtemp"> 57F/68F</div>
-                                    </div>
-                                    <div class="five-wind">
-                                        <div class="wind_2">17mph SW</div>
-                                    </div>
-                                    <div class="six-precip">
-                                        <div class="precip_2">70%</div>
-                                    </div>
-                                    <div class="six-humidity">
-                                        <div class="humidity_2">70%</div>
-                                    </div>
-                                    <div class="seven-uvindex">
-                                        <div class="uvindex_2">70%</div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -208,6 +294,8 @@
                             <div class ="visibilityandcoverageheader">
                                 <div class="visibilityandcoveragetype"><p><b>Visibility & Coverage</b></p></div>
                             </div>
+                            <div class="visibilitytype"><b>5 Miles</b><i>of Visibility</i> </div>
+                            <div class="cloudcoveragetype"><b>{{current.cloud_cover}}% </b><i>cloud coverage</i></div>
                         </div>
                     </div>
                 </div>
@@ -273,7 +361,7 @@
             <p>{{forecast[0].uv}}</p>
             <p>{{forecast[0].weather.description}}</p>
 
-            <p>{{forecast[0].wind_spd}} mph</p>
+            <p>{{forecast[0].wind_spd}}mph</p>
             <p>{{forecast[0].wind_cdir_full}}</p>
             <p>{{forecast[0].wind_cdir}}</p>
 
@@ -290,10 +378,28 @@
 
         </div>
         <div id="map"></div>
+
+
+           <p>{{forecast[0].wind_spd}} mph</p>
+            <p>{{forecast[0].wind_cdir_full}}</p>
+            <p>{{forecast[0].wind_cdir}}</p>
+
+            <p>{{forecast[0].vis}}</p>
+
+            <p>{{forecast[0].pop}}</p>
+
+            <p>{{forecast[0].precip}}</p>
+
+            <p>{{forecast[0].snow}}</p>
+
+            <p>{{forecast[0].dewpt}}</p>
+            <p>{{forecast[0].pres}} mb</p> 
+
+             <div v-bind:class="'icon-'+forecast[0].description_icon"></div>
+             <img v-bind:src="'/img/' + forecast[0].description_icon + '.png'" v-bind:alt="forecast[0].weather.description">
+
+
  -->
-
-
-
-        <script src="/js/script.js"></script>
+  <script src="/js/script.js"></script>
     </body>
 </html>

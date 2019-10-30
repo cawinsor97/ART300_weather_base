@@ -7,8 +7,8 @@
 }
 
 #map {
-	width: 600px;
-    height: 600px;
+    width: 1000px;
+    height: 300px;
 }
 
 body, html{
@@ -34,9 +34,10 @@ body, html{
 
 
 .currentweathericon {
-    width:50px;
-    height:25px;
+    width:40px;
+    height:40px;
     margin-left:90%;
+    margin-top:5px;
 }
 .currentlocation{
     color:#707070;
@@ -62,6 +63,69 @@ body, html{
     margin-left: 50%;
 }
 
+.moonandtidephasesheader {
+    background-color:#304E9D;
+    width: 200px;
+    height: 50px;
+    margin: auto;
+    margin-top: 575px;
+    padding-right: 100px;
+}
+
+.moonandtidephasestype {
+    text-align: left;
+    color: white;
+    margin-left: 20px;
+    padding-top: 1px;
+    font-size: 14px;
+}
+
+.moonandtidephasescontainer{
+    background-color: #F2F5F7; 
+    width: 300px;
+    display:block;
+    margin: auto;
+
+    
+}
+.moonphaseimg{
+    height:50%;
+    width: 50%;
+    margin: auto;
+}
+
+.moonphasetype{
+    color:#F89F08;
+    text-align: center;
+}
+
+.tidephaseimg {
+    height:50%;
+    width: 50%;
+    margin: auto;
+}
+
+.tidephacetype{
+    color:#F89F08;
+    text-align: center;
+    padding-bottom: 10px; 
+}
+
+.visibilitytype{
+    color:#F89F08;
+    text-align: center;
+    padding-bottom: 10px; 
+    margin-top: 10px;
+}
+
+.cloudcoveragetype{
+    color:#F89F08;
+    text-align: center;
+    padding-bottom: 10px; 
+    margin-top: 10px;
+}
+
+
 .currentweatherheader{
     background-color:#304E9D;
     width: 1000px;
@@ -79,7 +143,6 @@ body, html{
 
 }
 
-
 .currentcontainer{
     background-color:#F8F8F8;
     margin: auto;
@@ -89,8 +152,11 @@ body, html{
     grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1.2fr
 }
 
-.one-icon{
-
+#one-icon{
+    justify-self: center;
+    margin-top: 5%;
+    height: 100px;
+    width: 100px;
 }
 
 .two-currenttemp {
@@ -98,16 +164,32 @@ body, html{
 }
 .currenttemp {
    color:#F89F08;
-   font-size: 50px;
+   font-size: 30px;
    text-align: center;
    margin-top:20px;
+   margin-bottom: -10px;
 
 }
 .currentdescription{
     color:#304E9D;
-   font-size: 12px;
+   font-size: 14px;
    text-align: center;
+   margin-top:-10px;
 
+}
+
+.hltemptype{
+    margin: auto;
+    color:#F89F08;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.lineone{
+    width: 80px;
+    height: 1.5px;
+    background-color: #304E9D;
+    margin: auto;
 }
 
 .three-hl {
@@ -243,31 +325,68 @@ margin-bottom: 5px;
     color: white;
     margin-left: 20px;
     padding-top: 1px;
-}   
+}  
+
+.forecast_labels{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    background-color: #FFFFFF;
+    color: #304E9D;
+    height: 30px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.hl_forecast{
+    grid-column-start:4;
+    grid-column-end:4;
+    justify-self:center;
+}
+.w_forecast{
+    grid-column-start: 5;
+    grid-column-end: 5;
+    justify-self:center;
+
+}
+.pre_forecast{
+    grid-column-start:6;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    justify-self:center;
+
+}
+
+.h_forecast{
+    grid-column-start: 7;
+    grid-column-end: 7;
+    justify-self: center;
+}
+.uv_forecast{
+    grid-column-start:8;
+    grid-column-end: 8;
+    grid-row-start: 1;
+    justify-self:center;
+
+}
 
 
-.fivedaycontainer{
+.day{
     background-color:#F8F8F8;
     margin: auto;
-    width: 1000px;
-    height: 200px;
+    height: 75px;
     display:grid; 
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 .websitelayoutcontainer {
-    grid-template-columns: .5fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr ;
     display: grid;
+    width: 100%;
+}
+.day:nth-child(odd){
+    background-color: #F2F5F7;
 }
 
-.moonandtidephasesheader {
-    background-color:#304E9D;
-    width: 300px;
-    height: 50px;
-    margin: auto;
-    margin-top: 50px;
-}
 
 .visibilityandcoverageheader{
     background-color:#304E9D;
@@ -286,5 +405,142 @@ margin-bottom: 5px;
 
 img {
     max-width: 100%;
-    max-height: 100%;
+    max-height:100%;
+}
+
+.sunrisetype{
+    color: #F89F08;
+    margin: auto;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.sunriseicon{
+    max-width: 50%;
+    max-height:50%;
+    margin: auto;
+}
+.sunsettype{
+    color:#304E9D;
+    margin: auto;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.sunseticon{
+    max-width: 50%;
+    max-height:50%; 
+    margin: auto;
+}
+
+.one-dayofweek{
+    color: #304E9D;
+    text-align: center;
+    margin:auto;
+}
+
+
+.currenttemp_2{
+    color: #F89F08;
+    text-align: center;
+    margin-top:20px;
+}
+
+.description_2 {
+    color: #F89F08;
+    text-align: center;
+    margin: auto;
+}
+
+.four-hl{
+    text-align: center;
+    margin: auto;
+    color: #304E9D;
+}
+
+.five-wind{
+    text-align: center;
+    margin: auto;
+    color: #304E9D;
+}
+
+.six-precip{
+    text-align: center;
+    margin: auto;
+    color: #304E9D;
+}
+
+.six-humidity{
+    text-align: center;
+    margin: auto; 
+    color: #304E9D;
+}
+
+.seven-uvindex{
+   text-align: center;
+    margin: auto;
+    color: #304E9D;   
+}
+
+.icon-01d{
+    background-image:url('images/01d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-02d{
+    background-image:url('images/02d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-03d{
+    background-image:url('images/03d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-04d{
+    background-image:url('images/04d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-09d{
+    background-image:url('images/09d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-10d{
+    background-image:url('images/01d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-11d{
+    background-image:url('images/01d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-13{
+    background-image:url('images/01d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
+}
+
+.icon-50d{
+    background-image:url('images/01d.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size:contain;
 }
